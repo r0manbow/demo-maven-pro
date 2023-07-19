@@ -2,6 +2,9 @@ package org.example;
 
 
 import org.apache.http.ParseException;
+import org.example.constant.ApiKey;
+import org.example.dto.WeatherData;
+import org.example.service.WeatherApiClient;
 
 import java.io.IOException;
 import java.util.Scanner;
