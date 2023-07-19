@@ -1,5 +1,7 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WeatherData {
     private Coord coord;
     private Weather[] weather;
@@ -14,7 +16,7 @@ public class WeatherData {
     private int timezone;
     private long id;
     private String name;
-    private int code;
+    private int cod;
 
     public Coord getCoord() {
         return coord;
@@ -96,10 +98,12 @@ public class WeatherData {
         return timezone;
     }
     public void setTimezone(int timezone) {this.timezone = timezone;}
-    public int getCode() {
-        return code;
+    @JsonProperty("cod")
+    public int getCod() {
+        return cod;
     }
-    public void setCode(int code) {this.code = code;}
+    @JsonProperty("cod")
+    public void setCod(int cod) {this.cod = cod;}
     public long getId() {
         return id;
     }

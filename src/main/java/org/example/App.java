@@ -12,19 +12,21 @@ public class App
         Scanner scanner = new Scanner(System.in);
 
         // Получаем от пользователя название города
-        System.out.print("Введите название города: ");
+        System.out.print("Введите название города латинскими буквами без специальных знаков: ");
         String city = scanner.nextLine();
+        String cityEdited = city.replace(" ", "+");
 
         // Создаем объект класса WeatherApiClient
         WeatherApiClient weatherApiClient = new WeatherApiClient(ApiKey.API_KEY);
 
         // Выполняем запрос к API и получаем данные о погоде
-        WeatherData weatherData = weatherApiClient.getWeatherData(city);
+        WeatherData weatherData = weatherApiClient.getWeatherData(cityEdited);
 
         // Выводим информацию о погоде на экран
-        //System.out.println("Погода в городе " + weatherData.getCity() + ":");
-        //System.out.println("Температура: " + weatherData.getTemperature() + "°C");
-        //System.out.println("Описание: " + weatherData.getDescription());
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Погода в городе " + weatherData.getName() + ", страна "+ weatherData.getSys().getCountry() + " в настоящее время:");
+        System.out.println("Температура: " + weatherData.getMain().getTemp() + "°C");
+        System.out.println("Описание: " + weatherData.getWeather()[0].getDescription());
 
         // Закрываем сканнер
         scanner.close();

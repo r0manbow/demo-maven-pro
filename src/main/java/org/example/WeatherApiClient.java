@@ -22,7 +22,8 @@ public class WeatherApiClient {
 
     public WeatherData getWeatherData(String city) throws IOException, ParseException {
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather";
-        String url = apiUrl + "?q=" + city + "&appid=" + ApiKey.API_KEY;
+        String url = apiUrl + "?q=" + city + "&lang=" + Lang.LANG + "&appid=" + ApiKey.API_KEY + "&units=" + Units.UNITS;
+        //System.out.println(url);
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         HttpResponse response = httpClient.execute(httpGet);
